@@ -1,17 +1,19 @@
 import { sequelize } from "../../service/db-connection";
-import { Model, DataTypes } from "sequelize";
-import { ITask } from "./tasks.types";
+import { Model, DataTypes, UpdateOptions } from "sequelize";
+import { TaskDTO } from "./tasks.types";
 
-export default class Task extends Model<ITask> implements ITask {
-    public text!: string;
-    public completed!: boolean;
+export default class Task extends Model<TaskDTO> implements TaskDTO {
+    text!: string;
+    completed!: boolean;
 }
 
+const StringType = () => ({
+    type: DataTypes.STRING,
+    allowNull: false
+})
+
 Task.init({
-    text: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+    text: StringType(),
     completed: {
         type: DataTypes.BOOLEAN,
         allowNull: false

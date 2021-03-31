@@ -1,3 +1,7 @@
+GET http://localhost:4000/api/tasks
+
+###
+
 POST http://localhost:4000/api/task
 Content-Type: application/json
 
@@ -5,3 +9,17 @@ Content-Type: application/json
     "text": "Super task",
     "completed": false
 }
+
+###
+
+PATCH  http://localhost:4000/api/task/11
+Content-Type: application/json
+
+{
+    "text": "Super task!!",
+    "completed": true
+}
+
+###
+
+DELETE http://localhost:4000/api/task/10
