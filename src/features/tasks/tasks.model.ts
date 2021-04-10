@@ -1,8 +1,8 @@
 import { sequelize } from "../../service/db-connection";
 import { Model, DataTypes, UpdateOptions } from "sequelize";
-import { TaskDTO } from "./tasks.types";
+import { ITask } from "./tasks.types";
 
-export default class Task extends Model<TaskDTO> implements TaskDTO {
+export default class Task extends Model<ITask> implements ITask {
     text!: string;
     completed!: boolean;
 }

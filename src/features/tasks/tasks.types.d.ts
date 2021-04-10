@@ -4,10 +4,10 @@ export interface IRequest extends Request {
     params: {
         id: string
     }
-    body: TaskDTO
+    body: ITask
 }
 
-export interface TaskDTO {
+export interface ITask {
     text: string
     completed: boolean
 }
