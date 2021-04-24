@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize('San_react_ov4', 'san', '2eJi7o', {
-    host: '109.206.169.221',
+export const sequelize = new Sequelize(<string>process.env.DB_NAME, <string>process.env.DB_USER, process.env.DB_PASS, {
+    host: process.env.DB_HOST,
     dialect: 'mysql'
 });
 
