@@ -7,7 +7,7 @@ type DecodedToken = {
     id: number
 }
 
-interface TokenRequest extends Request {
+export interface TokenRequest extends Request {
     credentials: {
         id?: number
         role?: "guest" | "admin"
@@ -21,8 +21,8 @@ export function createToken(userFromDB: User) {
 }
 
 export function verifyToken(req: TokenRequest, res: Response, next: NextFunction) {
-    if (req.headers['Authorization'] && req.headers['Authorization'].length) {
-        const token = (<string>req.headers['Authorization']).replace(/(bearer|jwt)\s+/, '')
+    if (req.headers['authorization'] && req.headers['authorization'].length) {
+        const token = (<string>req.headers['authorization']).replace(/(bearer|jwt)\s+/, '')
         const verifyCallback: VerifyCallback = (err, decodedToken) => {
             const token = decodedToken as DecodedToken
             if (err) {
@@ -33,8 +33,7 @@ export function verifyToken(req: TokenRequest, res: Response, next: NextFunction
         }
         jwt.verify(token, <string>process.env.JWT_SECRET, verifyCallback)
     } else {
-        req.credentials = { role: "guest" }
-        next()
+        return next({ message: "Failed to authenticate token", statusCode: 401 })
     }
 }
 
@@ -44,6 +43,9 @@ export async function createPasswordHash(password: string) {
 }
 
 export async function comparePassword(password: string, hash: string) {
-    if (typeof password === 'string') return bcryptjs.compare(password, hash)
+    if (typeof password === 'string') {
+        const result = await bcryptjs.compare(password, hash)
+        return result
+    }
     else return false
 }

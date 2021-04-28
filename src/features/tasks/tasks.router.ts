@@ -1,16 +1,22 @@
 import { Router } from "express";
+import { verifyToken } from "../../service/auth-service";
 import { CreateNewTask, GetAllTasks, GetTaskById, RemoveTask, UpdateTask } from "./tasks.controller";
 
 const tasksRouter = Router()
 
-tasksRouter.get('/api/tasks', GetAllTasks)
+// @ts-ignore
+tasksRouter.get('/api/tasks',  verifyToken, GetAllTasks)
 
-tasksRouter.get('/api/task/:id', GetTaskById)
+// @ts-ignore
+tasksRouter.get('/api/task/:id', verifyToken, GetTaskById)
 
-tasksRouter.post('/api/task', CreateNewTask)
+// @ts-ignore
+tasksRouter.post('/api/task', verifyToken, CreateNewTask)
 
-tasksRouter.patch('/api/task/:id', UpdateTask)
+// @ts-ignore
+tasksRouter.patch('/api/task/:id', verifyToken, UpdateTask)
 
-tasksRouter.delete('/api/task/:id', RemoveTask)
+// @ts-ignore
+tasksRouter.delete('/api/task/:id', verifyToken, RemoveTask)
 
 export default tasksRouter

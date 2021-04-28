@@ -1,25 +1,39 @@
 GET http://localhost:4000/api/tasks
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjE5NjI3NDY2LCJleHAiOjE2MTk4MDAyNjZ9.PI7ndwzDY3wytQ9bCJrgTDtobaJ8hpfOHZPcCkH4Kk0
+
+###
+
+GET http://localhost:4000/api/tasks
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjE5NjI5Njc4LCJleHAiOjE2MTk4MDI0Nzh9.EVOYKRUDn0uWO-nca8Rjis_vZhG5YnkNBfPLqFJQdAM
+
+###
+
+GET http://localhost:4000/api/task/12
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjE5NjI5Njc4LCJleHAiOjE2MTk4MDI0Nzh9.EVOYKRUDn0uWO-nca8Rjis_vZhG5YnkNBfPLqFJQdAM
 
 ###
 
 POST http://localhost:4000/api/task
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjE5NjI5Njc4LCJleHAiOjE2MTk4MDI0Nzh9.EVOYKRUDn0uWO-nca8Rjis_vZhG5YnkNBfPLqFJQdAM
 
 {
-    "text": "Super task",
-    "completed": false
-}
-
-###
-
-PATCH  http://localhost:4000/api/task/11
-Content-Type: application/json
-
-{
-    "text": "Super task!!",
+    "text": "task 3",
     "completed": true
 }
 
 ###
 
-DELETE http://localhost:4000/api/task/10
+PATCH  http://localhost:4000/api/task/1
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjE5NjI3NDY2LCJleHAiOjE2MTk4MDAyNjZ9.PI7ndwzDY3wytQ9bCJrgTDtobaJ8hpfOHZPcCkH4Kk0
+
+{
+    "text": "Super task???????",
+    "completed": false
+}
+
+###
+
+DELETE http://localhost:4000/api/task/1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjE5NjI3NDY2LCJleHAiOjE2MTk4MDAyNjZ9.PI7ndwzDY3wytQ9bCJrgTDtobaJ8hpfOHZPcCkH4Kk0

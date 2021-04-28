@@ -1,6 +1,7 @@
 import { Request } from "express";
+import { TokenRequest } from "../../service/auth-service";
 
-export interface IRequest extends Request {
+export interface IRequest extends TokenRequest {
     params: {
         id: string
     }
@@ -10,6 +11,7 @@ export interface IRequest extends Request {
 export interface ITask {
     text: string
     completed: boolean
+    UserId: number
 }
 
 // export interface IRequestTask extends Request {
