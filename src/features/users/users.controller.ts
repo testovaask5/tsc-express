@@ -11,11 +11,11 @@ import { IUser } from "./users.types";
 
 export const CreateNewUser = async (req: Request, res: Response) => {
     const newUser: IUser = req.body
-    const taskFromDb = await User.create({
+    const userFromDb = await User.create({
         name: newUser.name,
         password: await createPasswordHash(newUser.password)
     })
-    res.status(201).send(taskFromDb)
+    res.status(201).send(userFromDb)
 }
 
 export const Login = async (req: Request, res: Response) => {

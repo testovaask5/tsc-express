@@ -1,11 +1,13 @@
 import { config } from "dotenv";
 config()
+import cors from "cors";
 import express, {ErrorRequestHandler} from "express";
 import tasksRouter from "./features/tasks/tasks.router";
 import usersRouter from "./features/users/users.router";
 
 const app = express();
 
+app.use(cors())
 app.use('/api', express.json())
 
 app.use(tasksRouter)

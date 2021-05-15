@@ -1,5 +1,5 @@
 GET http://localhost:4000/api/tasks
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjE5NjI3NDY2LCJleHAiOjE2MTk4MDAyNjZ9.PI7ndwzDY3wytQ9bCJrgTDtobaJ8hpfOHZPcCkH4Kk0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjIxMDk3Mjg4LCJleHAiOjE2MjEyNzAwODh9.39tl3nso3FbClxA4t_96zO82VEJCX6KoJLX3Wovn2vA
 
 ###
 
