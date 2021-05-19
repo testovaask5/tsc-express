@@ -10,17 +10,22 @@ import { IUser } from "./users.types";
 // }
 
 export const CreateNewUser = async (req: Request, res: Response) => {
-    const newUser: IUser = req.body
-    const userFromDb = await User.create({
-        name: newUser.name,
-        password: await createPasswordHash(newUser.password)
-    })
-    res.status(201).send(userFromDb)
+    try {
+        const newUser: IUser = req.body
+        const userFromDb = await User.create({
+            name: newUser.name,
+            password: await createPasswordHash(newUser.password)
+        })
+        res.status(201).send(userFromDb)
+    } catch (error) {
+        res.status(403).send({ message: 'The name is not unique' })
+    }
+
 }
 
 export const Login = async (req: Request, res: Response) => {
     const loginUser: IUser = req.body
-    const userFromDb = await User.findOne({where: {name: loginUser.name}})
+    const userFromDb = await User.findOne({ where: { name: loginUser.name } })
     if (userFromDb && await comparePassword(loginUser.password, userFromDb.password)) {
         const token = 'bearer ' + createToken(userFromDb)
         res.send({
