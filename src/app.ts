@@ -1,9 +1,14 @@
 import { config } from "dotenv";
-config()
+import path from "path";
+if (process.env.NODE_ENV === 'production') {
+    config({path: path.resolve(process.cwd(), '.env.production')})
+} else config()
 import cors from "cors";
 import express, {ErrorRequestHandler} from "express";
 import tasksRouter from "./features/tasks/tasks.router";
 import usersRouter from "./features/users/users.router";
+
+const port = process.env.PORT || 4000
 
 const app = express();
 
@@ -19,6 +24,8 @@ const nextError: ErrorRequestHandler = (err, req, res, next) => {
 
 app.use(nextError)
 
-app.listen(4000, () => {
-    console.log('Server started at http://localhost:4000')
+app.use(express.static(path.resolve(process.cwd(), 'public')))
+
+app.listen(port, () => {
+    console.log('Server started at http://localhost:' + port)
 })
